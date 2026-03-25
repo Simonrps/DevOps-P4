@@ -10,7 +10,7 @@
   "scripts": {
     "build": "npx webpack --config ./src/webpack.config.js --mode production",
     "dev": "npx webpack --config ./src/webpack.config.js --mode development --watch",
-    "test": "npx standard && npx jest"
+    "test": "standard && jest"
   },
   "author": "githubtraining",
   "license": "MIT",
@@ -24,6 +24,8 @@
     "@babel/core": "^7.25.6",
     "@babel/preset-env": "^7.25.6",
     "@babel/register": "^7.25.6",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
     "html-webpack-plugin": "^5.6.0",
