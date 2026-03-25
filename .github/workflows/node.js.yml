@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
-
+          
       - name: Install dependencies
         run: npm ci
 
@@ -65,6 +65,14 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: npm
 
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node }}-
+
       - name: Install dependencies
         run: npm ci
 
@@ -73,6 +81,14 @@ jobs:
         with:
           name: build-${{ matrix.os }}-node-${{ matrix.node }}
           path: public/
+      
+      - name: Run linter
+        run: npx standard
 
       - name: Run tests
         run: npm test
+        
+      - name: Add test summary
+        if: success()
+        run: |
+          echo "✅ Tests passed on ${{ matrix.os }} with Node ${{ matrix.node }}" >> $GITHUB_STEP_SUMMARY
