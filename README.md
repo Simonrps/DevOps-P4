@@ -5,6 +5,7 @@
 This is the starter repository for practical four of the module **DevOps Pipelines**. The repository contains a simple Tic Tac Toe game written in JavaScript and utilises the Jest JavaScript testing framework.  
 
 ### Learning outcomes
+
 In this practical exercise you will learn how to:
 
 - Add a GitHub workflow to your repository
